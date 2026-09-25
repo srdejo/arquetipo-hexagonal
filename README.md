@@ -60,7 +60,7 @@ Beneficios:
 ## Estructura del proyecto
 
 ```
-src/main/java/com/pragma/powerup
+src/main/java/co/com/srdejo
 ├── domain                      # Núcleo: sin dependencias de frameworks
 │   ├── api/                    # Puertos de entrada (IObjectServicePort)
 │   ├── spi/                    # Puertos de salida (IObjectPersistencePort)
@@ -162,7 +162,7 @@ Los tests usan H2 en memoria (`src/test/resources/application.yml`). El reporte 
 
 Supongamos que quieres modelar `Restaurant`:
 
-1. **Renombra el paquete base** `com.pragma.powerup` (y `group` en `build.gradle`) al de tu proyecto.
+1. **Renombra el paquete base** `co.com.srdejo` (y `group` en `build.gradle`) al de tu proyecto.
 2. **Dominio** (empieza siempre por aquí):
    - `domain/model/Restaurant` — el modelo con sus reglas.
    - `domain/api/IRestaurantServicePort` — qué operaciones ofrece.
