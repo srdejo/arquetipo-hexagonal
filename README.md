@@ -100,7 +100,7 @@ Observa que `ObjectUseCase` **no tiene anotaciones de Spring**: se registra como
 ### Prerrequisitos
 
 * JDK 26 (Gradle toolchain lo puede descargar automáticamente)
-* PostgreSQL (o Docker)
+* Una base de datos PostgreSQL accesible
 * Gradle — opcional, el proyecto incluye el wrapper `./gradlew`
 
 ### Instalación
@@ -112,23 +112,21 @@ Observa que `ObjectUseCase` **no tiene anotaciones de Spring**: se registra como
    cd arquetipo-hexagonal
    ```
 
-2. Levanta una base de datos PostgreSQL llamada `powerup`. Con Docker:
+2. Define las variables de entorno de conexión a tu base de datos (las lee `application.yml`):
+
+   | Variable | Descripción |
+   |---|---|
+   | `DB_HOST` | Host de PostgreSQL |
+   | `DB_PORT` | Puerto |
+   | `DB_NAME` | Nombre de la base de datos |
+   | `DB_USERNAME` | Usuario |
+   | `DB_PASSWORD` | Contraseña |
 
    ```sh
-   docker run -d --name powerup-db -p 5432:5432 \
-     -e POSTGRES_DB=powerup -e POSTGRES_USER=postgres -e POSTGRES_PASSWORD=postgres \
-     postgres:17
+   export DB_HOST=localhost DB_PORT=5432 DB_NAME=mi_db DB_USERNAME=usuario DB_PASSWORD=secreto
    ```
 
-3. Configura la conexión (opcional). `application.yml` lee variables de entorno con valores por defecto:
-
-   | Variable | Por defecto |
-   |---|---|
-   | `DB_HOST` | `localhost` |
-   | `DB_PORT` | `5432` |
-   | `DB_NAME` | `powerup` |
-   | `DB_USERNAME` | `postgres` |
-   | `DB_PASSWORD` | `postgres` |
+   Las tablas se crean automáticamente al arrancar (`ddl-auto: update`).
 
 ### Ejecutar
 
